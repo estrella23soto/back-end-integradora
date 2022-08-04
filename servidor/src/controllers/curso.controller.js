@@ -79,17 +79,16 @@ const deleteCurso = async (req, res) => {
 //UPDATE 
 const updateCurso = async (req, res) => {
     try {
-        console.log(req.params);
         const{ id } = req.params ;
         
         const{cveCurso, cvePersona, nombre, descripcion, numHoras, activo, estatus, fechaCreado, fechaRevision, comentarios}= req.body;
-       // const curso = {cveCurso, cvePersona, nombre, descripcion, numHoras, activo, estatus, fechaCreado, fechaRevision, comentarios};
+        const curso = {cveCurso, cvePersona, nombre, descripcion, numHoras, activo, estatus, fechaCreado, fechaRevision, comentarios};
         const conexion =  await getconexion();
-        const data= req.body;
-        const result = await conexion.query("UPDATE curso SET  ? WHERE cveCurso  = ? " ,[data, id]);
+        //const data= req.body;
+        const result = await conexion.query("UPDATE curso SET  ? WHERE cveCurso  = ? " ,[curso, id]);
         
         //res.redirect('./lista');
-        console.json({message: 'actualizacion exitosa'});
+      res.json(result);
          } catch (error) {
         res.status(500);
         res.send(error.message);

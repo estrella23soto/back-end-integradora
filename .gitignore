@@ -7,8 +7,6 @@
 /bazel-out
 
 # Node
-/node_modules
-/servidor/node_modules
 /didactic2/node_modules
 npm-debug.log
 yarn-error.log
